@@ -1,0 +1,142 @@
+#GornyPasek
+	{
+	background-color: brown;
+	}
+	
+#GornyPasekWew
+	{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	
+#maleRwd
+	{
+	background-color: red;
+	}
+
+#Koszyk
+	{
+	width: 200px;
+	float: left;
+	}
+
+#Schowek
+	{
+	width: 200px;
+	float: left;
+	}
+
+#MenuLogowanie
+	{
+	width: 200px;
+	float: left;
+	}
+
+
+#Strona
+	{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: yellow;
+	border: 1px solid gray;
+	}
+	
+#Naglowek
+	{
+	text-align: center;
+	}
+#GorneMenu
+	{
+	text-align: center;
+	}
+
+#StronaWew
+
+#LewaKolumna
+	{
+	width: 200px;
+	float: left;
+	}
+
+#LewaKolumnaPrzerwa
+
+.smallRectangle
+	{
+	width: 200px;
+	float: left;
+	}
+
+.CalyBoxKategorie
+
+.BoxNaglowekKategorie
+
+.CalyBox
+
+.BoxNaglowek
+
+.BoxTresc
+
+.BoxZawartosc
+
+#SrodekKolumna
+
+.ModulRwdUkryj
+
+.StrNaglowek
+
+.ProduktZlozony OknoRwd
+{
+width: 400px;
+	float: left;
+	}
+.StrTresc
+{
+    width: 930px;
+    text-align: center;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid gray;
+	float: left;
+	cursor: pointer;
+	border-radius: 15px;
+}
+.AnimacjaZobacz
+{
+    width: 300px;
+    float: left;
+    padding: 2px;
+    margin: 2px;
+}
+.ProduktZlozony
+{
+    width: 450px;
+    float: left;
+    padding: 2px;
+    margin: 2px;
+}
+.Fotografia
+{
+   padding: 15px;
+   float: left;
+}
+.ProdCena
+{
+
+    text-align: left;
+}
+.cl
+
+.ModulNewsletter
+
+#Stopka
+
+.KolumnaStopki
+	{
+	width: 300px;
+	float: left;
+	}
+
+.StopkaRozwin
+
