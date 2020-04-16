@@ -1,5 +1,6 @@
 package com.mkpp.bookstore.security;
 
+import com.mkpp.bookstore.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +20,10 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//	@Autowired
-//	private BCryptPasswordEncoder bcp;
+	@Autowired
+	private BCryptPasswordEncoder bcp;
+
+	private UserDetailsServiceImpl userDetailsService;
 
 	@Autowired
 	private DataSource ds;
@@ -31,11 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Value("${spring.queries.roles-query}")
 	private String rolesQuery;
 
+	public SecurityConfig(UserDetailsServiceImpl userDetailsService) {
+		this.userDetailsService = userDetailsService;
+	}
+
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().usersByUsernameQuery(customersQuery)
-		.authoritiesByUsernameQuery(rolesQuery)
-		.dataSource(ds);
-//		.passwordEncoder(bcp);
+		auth.userDetailsService(userDetailsService);
 	}
 
 	protected void configure(HttpSecurity httpSec) throws Exception {
@@ -45,22 +49,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/index").permitAll()
 				.antMatchers("/test").permitAll()
 				.antMatchers("/login").permitAll()
+				.antMatchers("/sign-up").permitAll()
 				.antMatchers("/register").permitAll()
 				.antMatchers("/category/**").permitAll()
 				.antMatchers("/book/**").permitAll()
 				.antMatchers("/adduser").permitAll()
-				.antMatchers("/activatelink/**").permitAll()
+				.antMatchers("/token**").permitAll()
+				.antMatchers("/upload-image").permitAll()
+				.antMatchers("/add-image").permitAll()
+				.antMatchers("/adding-book").permitAll()
+				.antMatchers("/add-book-form").permitAll()
 //		.antMatchers("/admin").hasAuthority("ROLE_ADMIN")
 				.anyRequest().authenticated()
 				.and().csrf().disable()
-				.formLogin()
-				.loginPage("/login")
-				.failureUrl("/login?error=true")
-				.defaultSuccessUrl("/").usernameParameter("email")
-				.passwordParameter("password")
-				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/")
-				.and().exceptionHandling().accessDeniedPage("/denied");
+//				.formLogin()
+//				.loginPage("/login")
+//				.failureUrl("/login?error=true")
+//				.defaultSuccessUrl("/").usernameParameter("email")
+//				.passwordParameter("password")
+//				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//				.logoutSuccessUrl("/")
+//				.and()
+				.exceptionHandling().accessDeniedPage("/denied");
 	}
 
 	public void configure(WebSecurity webSec) throws Exception {

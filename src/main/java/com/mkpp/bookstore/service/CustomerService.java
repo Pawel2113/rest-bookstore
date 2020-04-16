@@ -6,6 +6,8 @@ public interface CustomerService {
 
     public Customer findUserByEmail(String email);
     public void saveCustomer(Customer customer);
+    public void sendToken(Customer customer);
+    public boolean isCustomer(String email);
     public void updateUserPassword(String newPassword, String email);
     public void updateUserProfile(String newName, String newLastName, String newEmail, int id);
     public void updateUserActivation(int activeCode, String activationCode);

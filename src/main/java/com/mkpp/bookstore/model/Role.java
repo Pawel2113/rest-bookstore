@@ -21,6 +21,10 @@ public class Role {
 
     public Role() {}
 
+    public Role(@NotNull String role, Customer customer) {
+        this.role = role;
+    }
+
     public int getId() {
         return id;
     }

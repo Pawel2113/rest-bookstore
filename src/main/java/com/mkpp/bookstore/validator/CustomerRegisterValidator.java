@@ -3,7 +3,7 @@ package com.mkpp.bookstore.validator;
 
 import com.mkpp.bookstore.constants.AppDemoConstants;
 import com.mkpp.bookstore.model.Customer;
-import com.mkpp.bookstore.utilities.AppdemoUtils;
+import com.mkpp.bookstore.utilities.BookstoreUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -25,14 +25,14 @@ public class CustomerRegisterValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "password", "error.customerPassword.empty");
 		
 		if (!customer.getEmail().equals(null)) {
-			boolean isMatch = AppdemoUtils.checkEmailOrPassword(AppDemoConstants.EMAIL_PATTERN, customer.getEmail());
+			boolean isMatch = BookstoreUtils.checkEmailOrPassword(AppDemoConstants.EMAIL_PATTERN, customer.getEmail());
 			if(!isMatch) {
 				errors.rejectValue("email", "error.customerEmailIsNotMatch");
 			}
 		}
 		
 		if (!customer.getPassword().equals(null)) {
-			boolean isMatch = AppdemoUtils.checkEmailOrPassword(AppDemoConstants.PASSWORD_PATTERN, customer.getPassword());
+			boolean isMatch = BookstoreUtils.checkEmailOrPassword(AppDemoConstants.PASSWORD_PATTERN, customer.getPassword());
 
 			if(!isMatch) {
 				errors.rejectValue("password", "error.customerPasswordIsNotMatch");

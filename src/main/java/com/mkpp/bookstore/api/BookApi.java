@@ -29,15 +29,6 @@ public class BookApi {
 
 //    @PostConstruct
 //    private void createDb() {
-//        Book book1 = new Book("Tytyl1", "Autor1", "Wydawnictwo1", 2019, 35.99);
-//        Book book2 = new Book("Tytyl2", "Autor2", "Wydawnictwo2", 2019, 29.99);
-//        book1 = bookRepository.save(book1);
-//        book2 = bookRepository.save(book2);
-//
-//        Customer customer1 = new Customer("Adam", "Adamowski", "adamowski@adam.com","adam123");
-//        Customer customer2 = new Customer("Adolf", "Adolfowski", "adolfowski@adolf.com","adolf123");
-//        customer1 = customerRepository.save(customer1);
-//        customer2 = customerRepository.save(customer2);
 //
 //        Purchase purchase1 = new Purchase(book1, customer1, new Date());
 //        Purchase purchase2 = new Purchase(book2, customer2, new Date());

@@ -2,9 +2,9 @@ package com.mkpp.bookstore.constants;
 
 public class AppDemoConstants {
 	
-	public static final String TAK = "tak";
+	public static final String YES = "tak";
 	
-	public static final String NIE = "nie";
+	public static final String NO = "nie";
 	
 	public static final String EMAIL_PATTERN = "^[a-zA-z0-9]+[\\._a-zA-Z0-9]*@[a-zA-Z0-9]+{2,}\\.[a-zA-Z]{2,}[\\.a-zA-Z0-9]*$";
 

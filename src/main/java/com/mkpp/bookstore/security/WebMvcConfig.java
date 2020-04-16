@@ -11,11 +11,10 @@ import javax.servlet.MultipartConfigElement;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-//	@Bean
-//	public BCryptPasswordEncoder pwdEncrypt() {
-//		BCryptPasswordEncoder bcp = new BCryptPasswordEncoder();
-//		return bcp;
-//	}
+	@Bean
+	public BCryptPasswordEncoder pwdEncrypt() {
+		return new BCryptPasswordEncoder();
+	}
 
 	@Bean
 	public MultipartConfigElement multipartConfigElement() {

@@ -55,12 +55,13 @@ public class CategoryController {
 
     private Page<Book> getAllBooksPageable(int page, String param) {
         Page<Book> pages;
-        pages = bookService.findAllSearchByCategory(param, PageRequest.of(page, ELEMENTS));
+//        pages = bookService.findAllSearchByCategory(param, PageRequest.of(page, ELEMENTS));
 
 //        for (Book books : pages) {
 //            int numerRoli = books.getRoles().iterator().next().getId();
 //            users.setNrRoli(numerRoli);
 //        }
-        return pages;
+//        return pages;
+        return null;
 }
 }

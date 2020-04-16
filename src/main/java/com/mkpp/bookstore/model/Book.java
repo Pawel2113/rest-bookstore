@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@EnableAutoConfiguration
+
 @Entity
 @Table(name = "book")
 public class Book {
@@ -41,7 +41,7 @@ public class Book {
 
     private int popularity;
 
-    private String image;
+    private long imageId;
 
     private String url;
 
@@ -137,12 +137,12 @@ public class Book {
         this.review = review;
     }
 
-    public String getImage() {
-        return image;
+    public long getImageId() {
+        return imageId;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageId(long imageId) {
+        this.imageId = imageId;
     }
 
     public int getPopularity() {
@@ -185,7 +185,28 @@ public class Book {
         this.description = description;
         this.review = review;
         this.popularity = popularity;
-        this.image = image;
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publishingHouse='" + publishingHouse + '\'' +
+                ", year=" + year +
+                ", price=" + price +
+                ", oldPrice=" + oldPrice +
+                ", category='" + category + '\'' +
+                ", subcategory='" + subcategory + '\'' +
+                ", availability=" + availability +
+                ", recommended=" + recommended +
+                ", description='" + description + '\'' +
+                ", review='" + review + '\'' +
+                ", popularity=" + popularity +
+                ", imageId=" + imageId +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

@@ -1,15 +1,20 @@
 package com.mkpp.bookstore.model;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 @EnableAutoConfiguration
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class Customer implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,15 +27,15 @@ public class Customer {
     @NotNull
     private String lastName;
 
+    @OneToOne
+    private Role role;
+
     private boolean person;
 
-    @NotNull
-    private String adress;
+    private String address;
 
-    @NotNull
     private String postCode;
 
-    @NotNull
     private String city;
 
     private int country;
@@ -54,7 +59,7 @@ public class Customer {
     @NotNull
     private String password;
 
-    private boolean active;
+    private boolean isEnabled;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "customer_role", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -96,12 +101,8 @@ public class Customer {
         this.password = password;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 
     public boolean getPerson() {
@@ -112,12 +113,12 @@ public class Customer {
         this.person = person;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPostCode() {
@@ -184,8 +185,38 @@ public class Customer {
         this.usingCustomerData = usingCustomerData;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority(role.getRole()));
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isEnabled;
     }
 
     public boolean isPerson() {
@@ -215,7 +246,7 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
         this.person = person;
-        this.adress = adress;
+        this.address = adress;
         this.postCode = postCode;
         this.city = city;
         this.country = country;
@@ -226,7 +257,6 @@ public class Customer {
         this.usingCustomerData = usingCustomerData;
         this.email = email;
         this.password = password;
-        this.active = true;
     }
 
     @Override
@@ -235,7 +265,7 @@ public class Customer {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", person=" + person +
-                ", adress='" + adress + '\'' +
+                ", adress='" + address + '\'' +
                 ", postCode='" + postCode + '\'' +
                 ", city='" + city + '\'' +
                 ", country=" + country +
@@ -246,7 +276,7 @@ public class Customer {
                 ", usingCustomerData=" + usingCustomerData +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", active=" + active +
+
                 '}';
     }
 }

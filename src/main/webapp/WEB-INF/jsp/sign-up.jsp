@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="s"  uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
-
+     <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
 <section class="StrTresc Ramka">
@@ -68,7 +71,7 @@
 
             <p>
                 <span>Ulica i numer domu / lokalu: <em class="required"></em></span>
-                <input type="text" path="adress" name="adress" id="adress" style="width:95%" value="" class="required" />
+                <input type="text" path="address" name="address" id="adress" style="width:95%" value="" class="required" />
             </p>
 
             <p>
@@ -104,11 +107,12 @@
             <strong class="CheckSekcja">Dane do logowania</strong>
 
             <br />
-            <div class="alert">
-                <c:if test="${alertMailExist}">
+                <div class="alert">
+                    <c:if test="${alertMailExist == true}">
                     <s><span class="closebtn">&times;</span>
-                    <strong>error.userEmailIsInUse</strong></s>
-            </div>
+                    <strong><s:message code="error.userEmailIsInUse"/></strong></s>
+                    </c:if>
+                </div>
             <p>
                 <span class="required">Adres email: <em class="required"></em></span>
                 <input type="text" style="width:95%" path="email" name="email" id="email" value="" class="required" />
@@ -175,6 +179,9 @@
 
 
             <div style="text-align:center">
+
+
+
 
                 <input type="submit" name="akcja" class="formbutton" id="submitButton"  value="Utwórz konto"
                 onclick="window.location.href='${pageContext.request.contextPath}/">
